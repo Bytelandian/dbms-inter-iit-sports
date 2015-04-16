@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.9
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 14, 2015 at 12:09 PM
--- Server version: 5.6.14
--- PHP Version: 5.5.6
+-- Generation Time: Apr 16, 2015 at 06:03 PM
+-- Server version: 5.5.41-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `dbms`
 --
-CREATE DATABASE IF NOT EXISTS `dbms` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `dbms`;
 
 -- --------------------------------------------------------
 
@@ -89,11 +87,12 @@ CREATE TABLE IF NOT EXISTS `badminton_team_stats` (
 --
 
 CREATE TABLE IF NOT EXISTS `basketball_match` (
-  `match_id` varchar(64) NOT NULL,
+  `match_id` int(11) NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `venue` varchar(64) NOT NULL,
-  `referee_id` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `referee_id` varchar(64) NOT NULL,
+  PRIMARY KEY (`match_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -102,8 +101,8 @@ CREATE TABLE IF NOT EXISTS `basketball_match` (
 --
 
 CREATE TABLE IF NOT EXISTS `basketball_player_stats` (
-  `player_id` varchar(64) NOT NULL,
-  `match_id` varchar(64) NOT NULL,
+  `player_id` int(11) NOT NULL,
+  `match_id` int(11) NOT NULL,
   `2points_scored` int(11) NOT NULL,
   `3points_scored` int(11) NOT NULL,
   `2points_attempted` int(11) NOT NULL,
@@ -112,7 +111,8 @@ CREATE TABLE IF NOT EXISTS `basketball_player_stats` (
   `rebounds` int(11) NOT NULL,
   `assists` int(11) NOT NULL,
   `steals` int(11) NOT NULL,
-  `turnovers` int(11) NOT NULL
+  `turnovers` int(11) NOT NULL,
+  PRIMARY KEY (`player_id`,`match_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -125,7 +125,8 @@ CREATE TABLE IF NOT EXISTS `basketball_team_stats` (
   `team_id` varchar(64) NOT NULL,
   `match_id` varchar(64) NOT NULL,
   `total_points_scored` int(11) NOT NULL,
-  `timeouts_taken` int(11) NOT NULL
+  `timeouts_taken` int(11) NOT NULL,
+  PRIMARY KEY (`team_id`,`match_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -231,7 +232,8 @@ CREATE TABLE IF NOT EXISTS `hockey_goals_scored` (
   `team_id` varchar(64) NOT NULL,
   `time` datetime NOT NULL,
   `scorer` varchar(64) NOT NULL,
-  `assisted` varchar(64) NOT NULL
+  `assisted` varchar(64) NOT NULL,
+  PRIMARY KEY (`match_id`,`team_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -241,12 +243,13 @@ CREATE TABLE IF NOT EXISTS `hockey_goals_scored` (
 --
 
 CREATE TABLE IF NOT EXISTS `hockey_match` (
-  `match_id` varchar(64) NOT NULL,
+  `match_id` int(11) NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `venue` varchar(64) NOT NULL,
   `winner` varchar(64) NOT NULL,
-  `motm` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `motm` varchar(64) NOT NULL,
+  PRIMARY KEY (`match_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -262,7 +265,8 @@ CREATE TABLE IF NOT EXISTS `hockey_match_player` (
   `minutes_played` int(11) NOT NULL,
   `fouls` int(11) NOT NULL,
   `yellow_cards` int(11) NOT NULL,
-  `red_cards` int(11) NOT NULL
+  `red_cards` int(11) NOT NULL,
+  PRIMARY KEY (`match_id`,`player_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -293,7 +297,8 @@ CREATE TABLE IF NOT EXISTS `iit` (
   `name` varchar(64) NOT NULL,
   `city` varchar(64) NOT NULL,
   `state` varchar(64) NOT NULL,
-  `pincode` char(6) NOT NULL
+  `pincode` char(6) NOT NULL,
+  PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
