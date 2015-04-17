@@ -4,6 +4,16 @@
 		return execute_query("Select name from iit");
 
 	}
+	function getplayernames()
+	{
+		return execute_query("Select * from player");
+
+	}
+	function getplayernamesbyiit($iitname)
+	{
+		return execute_query("Select * from player where iit='$iitname'");
+
+	}
 	if (isset($_GET['tournament_details_form_submit']))
 	{
 //		echo $_GET['year'];
@@ -45,6 +55,16 @@
 
 	}
 
+	else if (isset($_GET['referee_form_submit']))
+	{
+//		echo $_GET['year'];
+		$nm=$_GET['name'];
+		//echo "INSERT INTO player(name,date_of_birth,gender, email_id,address,iit) VALUES ('$nm','$dobirth','$gnd','$mailid','$add','$iit_name')";
+		return execute_query("INSERT INTO referee(name) VALUES ('$nm')");
+
+	}
+	
+
 	function execute_query($query)
 	{
 		include('config.php');
@@ -57,5 +77,6 @@
 		
 		return $output;
 	}
+	echo json_encode(getplayernamesbyiit('IIT BHU'));
 
 ?>
