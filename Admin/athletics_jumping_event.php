@@ -1,3 +1,9 @@
+
+<head>
+	<link rel="stylesheet" type="text/css" href="css/forms.css">
+</head>
+
+<body>
 <br><br><br>
 <h2 align="center">Athletics Jumping Event</h2>
 <form name="athletics_jumping_event" id="athletics_jumping_event">
@@ -23,3 +29,4 @@
 </table>
 
 </form>
+</body>

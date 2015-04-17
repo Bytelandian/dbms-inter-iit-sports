@@ -5,6 +5,10 @@ $iitcount = count($iitnames);
 
 ?>
 
+<head>
+	<link rel="stylesheet" type="text/css" href="css/forms.css">
+</head>
+
 
 <br><br><br>
 <h2 align="center">Athletics Running Event</h2>

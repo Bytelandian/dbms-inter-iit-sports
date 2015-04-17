@@ -3,8 +3,10 @@ include 'admin.php';
 $iitnames = getiitnames();
 $iitcount = count($iitnames);
 
-?>
+//$playernames = getplayernames();
+//$playercount = count($playernames);
 
+?>
 
 <!DOCTYPE html>
 <html>
@@ -13,7 +15,7 @@ $iitcount = count($iitnames);
 
   <meta charset="UTF-8">
 
-  <title>Add Tournament</title>
+  <title>Cricket Match</title>
 
     <style>
 
@@ -32,29 +34,21 @@ $iitcount = count($iitnames);
 		</div>-->
 		<br>
 		<div class="login">
-		<p class="form-header">Add Tournament</p>		
-		<form class="set-margin" name="tournament_details" id="tournament_details" action="iit_participation.php" onsubmit="FormSubmit()" method="GET">
+		<p class="form-header">Add Match</p>	
+		<form class="set-margin" name="cricket_match_details" id="cricket_match_details">
 
+			<input class="form-control" id="date" name="date" type="date" placeholder="Date"><br><br>
 
+			<input class="form-control"  id="winner" name="winner" type="text" placeholder="Winner"><br><br>
 
-			<!--<label for="disabledSelect">Year</label>-->
-			<input class="form-control" id="year" name="year" type="text" placeholder="year"><br><br>
-			<!--<label for="disabledSelect">Host</label>-->
-			<select  id="host" name="host">
+			<select  id="motm" name="motm">
 				<?php
-				for ($i=0; $i < $iitcount ; $i++)
-				{
-					echo "<option value=\"".$iitnames[$i]['name']."\"> ".$iitnames[$i]['name']." </option>" ;
-				}
-				?>
+				// for ($i=0; $i < $playercount ; $i++)
+				// {
+				// 	echo "<option value=\"".$playernames[$i]['name']."\"> ".$playernames[$i]['name'].", ".$playernames[$i]['name']." </option>" ;
+				// }
+				 ?>
 			</select><br><br>
-
-
-			<!--<label for="disabledSelect">Footfall</label>-->
-			<input class="form-control"  id="footfall" name="footfall" type="text" placeholder="Footfall"><br><br>
-
-			<!--<label for="disabledSelect">Start Date</label>-->
-			<input class="form-control"  id="startdate" name="startdate" type="date" placeholder="Starting date"><br><br>
 
 			<!--<label for="disabledSelect">End Date</label>-->
 			<input class="form-control" type="date"  id="enddate" name="enddate" placeholder="Ending date"><br><br>
@@ -67,9 +61,8 @@ $iitcount = count($iitnames);
 			<input type="submit" id="tournament_details_form_submit" value="Submit"/>  
 
 
-			
-		
-		</form>
+
+			</form>
 
 				<!--<input type="text" placeholder="username" name="user"><br>
 				<input type="password" placeholder="password" name="password"><br>

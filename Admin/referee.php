@@ -7,7 +7,9 @@ $iitcount = count($iitnames);
 //$yearcount = count($year);
 
 ?>
-
+<head>
+	<link rel="stylesheet" type="text/css" href="css/forms.css">
+</head>
 <br><br><br>
 <h2 align="center">Referee</h2>
 <form name="referee" id="referee" action=".">

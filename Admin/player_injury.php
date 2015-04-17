@@ -8,6 +8,10 @@ $iitcount = count($iitnames);
 
 ?>
 
+
+<head>
+	<link rel="stylesheet" type="text/css" href="css/forms.css">
+</head>
 <br><br><br>
 <h2 align="center">Player Injury</h2>
 <form name="player_injury" id="player_injury" action=".">

@@ -8,6 +8,9 @@ $iitcount = count($iitnames);
 
 ?>
 
+<head>
+	<link rel="stylesheet" type="text/css" href="css/forms.css">
+</head>
 <br><br><br>
 <h2 align="center">Player Team</h2>
 <form name="player_team" id="player_team" action=".">
