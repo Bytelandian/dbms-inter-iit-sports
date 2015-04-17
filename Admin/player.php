@@ -50,6 +50,8 @@ $iitcount = count($iitnames);
 			<input class="form-control" type="radio" name="gender" id="gender" value="female"/>Female<br><br>
 			<input class="form-control" type="text"  id="email" name="email" placeholder="Email ID"><br><br>
 			<input class="form-control" type="text"   id="address" name="address" placeholder="Address..."><br><br>
+			<input class="form-control" type="text"  name="phone1" placeholder="Phone Number 1..."><br><br>
+			<input class="form-control" type="text"  name="phone2" placeholder="Phone Number 2..."><br><br>
 			<select  id="host" name="iitname">
 				<?php
 				for ($i=0; $i < $iitcount ; $i++)
