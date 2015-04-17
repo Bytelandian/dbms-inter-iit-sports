@@ -3,6 +3,12 @@ include 'admin.php';
 $iitnames = getiitnames();
 $iitcount = count($iitnames);
 
+
+session_start();
+ if (!isset($_SESSION['admin_username'])){
+ 	header("Location: login.php");
+ }
+
 ?>
 
 
@@ -34,6 +40,9 @@ $iitcount = count($iitnames);
 		</div>-->
 		<br>
 		<div class="login">
+		<form class="set-margin" action="logout.php" method="POST">
+			<input type="submit" class="logout_button" value="Logout"/>  
+		</form>
 		<p class="form-header">Add Tournament</p>		
 		<form class="set-margin" name="tournament_details" id="tournament_details" action="iit_participation.php" onsubmit="FormSubmit()" method="GET">
 
@@ -66,7 +75,7 @@ $iitcount = count($iitnames);
 
 
 
-			<input type="submit" id="tournament_details_form_submit" value="Submit"/>  
+			<input type="submit" name="tournament_details_form_submit" value="Submit"/>  
 
 
 			

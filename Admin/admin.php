@@ -4,6 +4,17 @@
 		return execute_query("Select name from iit");
 
 	}
+	function getplayernames()
+	{
+		return execute_query("Select * from player");
+
+	}
+	function getplayernamesbyiit($iitname)
+	{
+		return execute_query("Select * from player where iit='$iitname'");
+
+	}
+
 	if (isset($_GET['tournament_details_form_submit']))
 	{
 //		echo $_GET['year'];
@@ -45,6 +56,28 @@
 
 	}
 
+	else if (isset($_GET['referee_form_submit']))
+	{
+//		echo $_GET['year'];
+		$nm=$_GET['name'];
+	//	echo "INSERT INTO referee(name) VALUES ('$nm')";
+		return execute_query("INSERT INTO referee(name) VALUES ('$nm')");
+
+	}
+
+	else if (isset($_GET['team_form_submit']))
+	{
+//		echo $_GET['year'];
+		$tsize=$_GET['teamsize'];
+		$spsr=$_GET['sponsor'];
+		$coach=$_GET['coach'];
+		$jrsey=$_GET['jersey'];
+		$iit=$_GET['iitname'];
+		echo "INSERT INTO team(team_size,sponsor,coach,jersey,name) VALUES ($tsize,'$spsr','$coach','$jrsey','$iit')";
+	//	return execute_query("INSERT INTO team(team_size,sponsor,coach,jersey,name) VALUES ($tsize,'$spsr','$coach','$jrsey','$iit')");
+
+	}
+
 	function execute_query($query)
 	{
 		include('config.php');
@@ -57,5 +90,6 @@
 		
 		return $output;
 	}
+	
 
 ?>

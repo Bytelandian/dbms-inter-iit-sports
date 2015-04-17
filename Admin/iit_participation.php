@@ -3,6 +3,12 @@ include 'admin.php';
 $iitnames = getiitnames();
 $iitcount = count($iitnames);
 
+session_start();
+ if (!isset($_SESSION['admin_username'])){
+ 	header("Location: login.php");
+ }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +60,12 @@ eventListener(submit, "submit", onsubmit);
 		</div>-->
 		<br>
 		<div class="login">
+		<form class="set-margin" action="logout.php" method="POST">
+			<input type="submit" class="logout_button" value="Logout"/>  
+		</form>
+		<form class="set-margin" action="referee.php" method="GET">
+			<input type="submit" class="logout_button" value="Next Step: Add Referees->"/>  
+		</form>
 		<p class="form-header">IIT participation Details</p>		
 		
 
@@ -96,7 +108,7 @@ eventListener(submit, "submit", onsubmit);
 
 
 
-<input type="submit" id="form_submit" value="Submit"/>
+<input type="submit" name="iit_participation_form_submit" value="Submit"/>
 
 
 </form>
