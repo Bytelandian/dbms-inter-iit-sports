@@ -1,9 +1,0 @@
-
-<form name="athletics_event_details" id="athletics_event_details">
-	
-	<label for="disabledSelect">Label</label><br>
-	<input class="form-control" type="text" placeholder="Placeholder" value="Value" disabled>
-
-
-
-</form>

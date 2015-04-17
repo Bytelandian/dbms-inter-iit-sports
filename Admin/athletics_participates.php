@@ -1,3 +1,8 @@
+
+<head>
+	<link rel="stylesheet" type="text/css" href="css/forms.css">
+</head>
+
 <br><br><br>
 <h2 align="center">Athletics Participates</h2>
 <form name="athletics_participates" id="athletics_participates">

@@ -5,11 +5,16 @@ $iitcount = count($iitnames);
 
 ?>
 
+
+<head>
+	<link rel="stylesheet" type="text/css" href="css/forms.css">
+</head>
+
 <h1 align="center">Admin Panel </h1> <h2 align="right">Welcome, admin</h2>
 
 <br><br><br>
 <h2 align="center">Player Details</h2>
-<form name="player_details" id="player_details" action=".">
+<form name="player_form_submit" id="player_form_submit" action=".">
 
 <table align="center">
 
@@ -44,14 +49,14 @@ $iitcount = count($iitnames);
 				<?php
 				for ($i=0; $i < $iitcount ; $i++)
 				{
-					echo "<option value=\"".$iitnames[$i]."\"> ".$iitnames[$i]." </option>" ;
+					echo "<option value=\"".$iitnames[$i]['name']."\"> ".$iitnames[$i]['name']." </option>" ;
 				}
 				?>
 			</select>
 		<td>
 	</tr>
 <tr>
-<input type="submit" id="form_submit" value="Submit"/>
+<input type="submit" id="player_form_submit" name="player_form_submit" value="Submit"/>
 </tr>
 </table>
 

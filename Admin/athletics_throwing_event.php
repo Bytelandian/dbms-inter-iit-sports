@@ -1,3 +1,8 @@
+
+<head>
+	<link rel="stylesheet" type="text/css" href="css/forms.css">
+</head>
+
 <br><br><br>
 <h2 align="center">Athletics Throwing Event</h2>
 <form name="athletics_throwing_event" id="athletics_throwing_event">
