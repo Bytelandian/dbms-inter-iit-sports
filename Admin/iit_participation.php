@@ -48,11 +48,11 @@ $iitcount = count($iitnames);
 		<td><input class="form-control"  id="sports" name="sports" type="text" placeholder="Sports Secretary"><td>
 	</tr>
 
-
+	<tr><td></td>
+	<td><input type="submit" id="form_submit" value="Submit"/></td>
+	</tr>
 
 </table>
 
-
-<input type="submit" id="form_submit" value="Submit"/>
 
 </form>

@@ -41,7 +41,6 @@ $iitcount = count($iitnames);
 		<td><label for="disabledSelect">IIT name</label></td>
 		<td>
 			<select  id="host" name="iitname">
-				<option value="temp"> temp </option>
 				<?php
 				for ($i=0; $i < $iitcount ; $i++)
 				{
@@ -51,11 +50,11 @@ $iitcount = count($iitnames);
 			</select>
 		<td>
 	</tr>
-
+<tr>
+<input type="submit" id="form_submit" value="Submit"/>
+</tr>
 </table>
 
-
-<input type="submit" id="form_submit" value="Submit"/>
 
 
 </form>
