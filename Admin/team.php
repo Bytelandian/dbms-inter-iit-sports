@@ -16,10 +16,6 @@ $iitcount = count($iitnames);
 <table align="center">
 
 	<tr>
-		<td><label for="disabledSelect">Team ID</label></td>
-		<td><input class="form-control"  id="teamid" name="teamid" type="text" placeholder="teamid"></td>
-	</tr>
-	<tr>
 		<td><label for="disabledSelect">Team size</label></td>
 		<td><input class="form-control" type="text"  id="teamsize" name="teamsize" placeholder="Team size">
 		</td>
@@ -46,7 +42,7 @@ $iitcount = count($iitnames);
 				<?php
 				for ($i=0; $i < $iitcount ; $i++)
 				{
-					echo "<option value=\"".$iitnames[$i]."\"> ".$iitnames[$i]." </option>" ;
+					echo "<option value=\"".$iitnames[$i]['name']."\"> ".$iitnames[$i]['name']." </option>" ;
 				}
 				?>
 			</select>
