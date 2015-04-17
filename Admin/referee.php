@@ -3,6 +3,12 @@ include 'admin.php';
 $iitnames = getiitnames();
 $iitcount = count($iitnames);
 
+session_start();
+ if (!isset($_SESSION['admin_username'])){
+ 	header("Location: login.php");
+ }
+
+
 //$year = getyears();
 //$yearcount = count($year);
 
