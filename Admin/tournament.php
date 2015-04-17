@@ -8,6 +8,8 @@ $iitcount = count($iitnames);
 
 <!DOCTYPE html>
 <html>
+<br><br><br>
+<h2 align="center">Tournament_Details</h2>
 
 <head>
 

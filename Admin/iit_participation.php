@@ -67,11 +67,11 @@ eventListener(submit, "submit", onsubmit);
 		<!--<label for="disabledSelect">Name of IIT</label>-->
 		
 			<select  id="name" name="name">
-				<option value="temp"> temp </option>
+				
 				<?php
 				for ($i=0; $i < $iitcount ; $i++)
 				{
-					echo "<option value=\"".$iitnames[$i]."\"> ".$iitnames[$i]." </option>" ;
+					echo "<option value=\"".$iitnames[$i]['name']."\"> ".$iitnames[$i]['name']." </option>" ;
 				}
 				?>
 			</select><br><br>
@@ -97,7 +97,6 @@ eventListener(submit, "submit", onsubmit);
 
 
 <input type="submit" id="form_submit" value="Submit"/>
-	
 
 
 </form>

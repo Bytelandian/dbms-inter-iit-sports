@@ -49,14 +49,14 @@ $iitcount = count($iitnames);
 				<?php
 				for ($i=0; $i < $iitcount ; $i++)
 				{
-					echo "<option value=\"".$iitnames[$i]."\"> ".$iitnames[$i]." </option>" ;
+					echo "<option value=\"".$iitnames[$i]['name']."\"> ".$iitnames[$i]['name']." </option>" ;
 				}
 				?>
 			</select>
 		<td>
 	</tr>
 <tr>
-<input type="submit" id="form_submit" value="Submit"/>
+<input type="submit" id="player_form_submit" name="player_form_submit" value="Submit"/>
 </tr>
 </table>
 
