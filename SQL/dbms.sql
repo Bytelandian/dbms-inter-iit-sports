@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 18, 2015 at 02:44 AM
+-- Generation Time: Apr 18, 2015 at 03:21 AM
 -- Server version: 5.5.41-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.8
 
@@ -813,7 +813,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `date_of_birth` date NOT NULL,
-  `gender` set('Male','Female') CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT 'Male',
+  `gender` set('male','female') CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT 'male',
   `email_id` varchar(64) NOT NULL,
   `address` varchar(64) NOT NULL,
   `iit` varchar(64) DEFAULT NULL,
@@ -826,15 +826,15 @@ CREATE TABLE IF NOT EXISTS `player` (
 --
 
 INSERT INTO `player` (`id`, `name`, `date_of_birth`, `gender`, `email_id`, `address`, `iit`) VALUES
-(1230, 'Gaurav', '1994-08-19', 'Male', 'gauravmi@iitrpr.ac.in', '', 'IIT BHU'),
-(1231, 'Yash', '0000-00-00', 'Male', 'abc@gmail.com', 'IIT Ropar NangalRoad', 'IIT BHU'),
-(1232, 'Shubham', '0000-00-00', 'Male', 'abcd@gmail.com', 'Chandigarh', 'IIT BHU'),
-(1233, 'Kiara', '1994-08-07', 'Female', 'abcde@gmail.com', 'Mumbai', 'IIT BHU'),
-(1234, 'Saket', '0000-00-00', 'Male', 'abc94@gmail.com', 'Delhi', 'IIT BHU'),
-(1235, 'AK', '1994-11-02', 'Male', 'abcxy@gmail.com', 'Mandi', 'IIT BHU'),
-(1236, 'Chandu', '1994-01-06', 'Male', 'abcmn@gmail.com', 'Ropar NangalRoad', 'IIT BHU'),
-(1237, 'Rohan', '1994-05-07', 'Male', 'abc05@gmail.com', 'Ropar NangalRoad', 'IIT BHU'),
-(1238, 'Sachi', '1994-08-27', 'Male', 'abcd@gmail.com', 'New Delhi', 'IIT BHU');
+(1230, 'Gaurav', '1994-08-19', 'male', 'gauravmi@iitrpr.ac.in', '', 'IIT BHU'),
+(1231, 'Yash', '0000-00-00', 'male', 'abc@gmail.com', 'IIT Ropar NangalRoad', 'IIT BHU'),
+(1232, 'Shubham', '0000-00-00', 'male', 'abcd@gmail.com', 'Chandigarh', 'IIT BHU'),
+(1233, 'Kiara', '1994-08-07', 'female', 'abcde@gmail.com', 'Mumbai', 'IIT BHU'),
+(1234, 'Saket', '0000-00-00', 'male', 'abc94@gmail.com', 'Delhi', 'IIT BHU'),
+(1235, 'AK', '1994-11-02', 'female', 'abcxy@gmail.com', 'Mandi', 'IIT BHU'),
+(1236, 'Chandu', '1994-01-06', 'male', 'abcmn@gmail.com', 'Ropar NangalRoad', 'IIT BHU'),
+(1237, 'Rohan', '1994-05-07', 'male', 'abc05@gmail.com', 'Ropar NangalRoad', 'IIT BHU'),
+(1238, 'Sachi', '1994-08-27', 'male', 'abcd@gmail.com', 'New Delhi', 'IIT BHU');
 
 -- --------------------------------------------------------
 
