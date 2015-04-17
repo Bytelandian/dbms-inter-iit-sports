@@ -9,27 +9,24 @@ $iitcount = count($iitnames);
 ?>
 
 <br><br><br>
-<h2 align="center">Player plays in Tournament</h2>
-<form name="player_plays_in_tournament" id="player_plays_in_tournament" action=".">
+<h2 align="center">Referee</h2>
+<form name="referee" id="referee" action=".">
 
 <table align="center">
-
 	<tr>
-		<td><label for="disabledSelect">Player_id</label></td>
+		<td><label for="disabledSelect">Referee_id</label></td>
 		<td><input class="form-control"  id="pid" name="pid" type="text" placeholder="Player_id"></td>
 	</tr>
 	<tr>
-		<td><label for="disabledSelect">Tournament played</label></td>
-		<td><input class="form-control" type="text"  id="tour" name="tour" placeholder="Tournament">
+		<td><label for="disabledSelect">Referee Name</label></td>
+		<td><input class="form-control" type="text"  id="name" name="name" placeholder="Referee Name">
 		</td>
 	</tr>
 
 	<tr><td></td>
 	<td><input type="submit" id="form_submit" value="Submit"/></td>
 	</tr>
-
+	
 </table>
-
-
 
 </form>

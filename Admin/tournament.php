@@ -48,6 +48,11 @@ $iitcount = count($iitnames);
 		<td><label for="disabledSelect">Chief Guest</label></td>
 		<td><input class="form-control" type="text"  id="cheifg" name="chiefg" placeholder="Chief Guest"><td>
 	</tr>
+
+	<tr><td></td>
+	<td><input type="submit" id="form_submit" value="Submit"/></td>
+	</tr>
+	
 </table>
 
 <input type="submit" id="tournament_details_form_submit" name="tournament_details_form_submit" value="Submit"/>  

@@ -23,11 +23,12 @@ $iitcount = count($iitnames);
 		<td><input class="form-control" type="text"  id="team" name="team" placeholder="team id">
 		</td>
 	</tr>
+	<tr><td></td>
+	<td><input type="submit" id="form_submit" value="Submit"/></td>
+	</tr>
 
 </table>
 
-
-<input type="submit" id="form_submit" value="Submit"/>
 
 
 </form>
