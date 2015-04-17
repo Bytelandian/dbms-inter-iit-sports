@@ -66,7 +66,7 @@ $iitcount = count($iitnames);
 
 
 
-			<input type="submit" id="tournament_details_form_submit" value="Submit"/>  
+			<input type="submit" name="tournament_details_form_submit" value="Submit"/>  
 
 
 			

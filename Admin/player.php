@@ -14,7 +14,7 @@ $iitcount = count($iitnames);
 
 <br><br><br>
 <h2 align="center">Player Details</h2>
-<form name="player_form_submit" id="player_form_submit" action=".">
+<form name="player_form_submit" id="player_form_submit" action="player.php">
 
 <table align="center">
 

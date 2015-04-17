@@ -96,7 +96,7 @@ eventListener(submit, "submit", onsubmit);
 
 
 
-<input type="submit" id="form_submit" value="Submit"/>
+<input type="submit" name="iit_participation_form_submit" value="Submit"/>
 
 
 </form>
