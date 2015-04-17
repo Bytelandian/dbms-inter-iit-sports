@@ -1,4 +1,5 @@
 <?php
+	$sports = array("athletics","badminton","basketball","cricket","football","hockey","lawntennis","squash","tabletennis","volleyball");
 	function getPlayers($input){
 		$query = [];
 		if(isset($input['iit'])){
@@ -68,7 +69,7 @@
 		
 		$finalQ = "select * from player ".$where.";";
 
-		echo $finalQ."<br>";
+		// echo $finalQ."<br>";
 
 		$output = execute($finalQ);
 
@@ -79,17 +80,20 @@
 		// }
 
 		for($x = 0; $x < count($output) ; ++$x){
-			var_dump($output[$x]);
+			// var_dump($output[$x]);
 			$output[$x]['phone'] = findPhoneNumbers($output[$x]['id']);
-			echo "<br>";
+			$output[$x]['year'] = findYearsParticipating($output[$x]['id']);
+			$output[$x]['sport'] = findSports($output[$x]['id']);
+			// echo "<br>";
 		}
-		echo "<br>";echo "<br>";
-		for($x = 0; $x < count($output) ; ++$x){
-			var_dump($output[$x]);
-			// $output[$x]['phone'] = findPhoneNumbers($output[$x]['id']);
-			echo "<br>";
-		}
+		// echo "<br>";echo "<br>";
+		// for($x = 0; $x < count($output) ; ++$x){
+		// 	var_dump($output[$x]);
+		// 	// $output[$x]['phone'] = findPhoneNumbers($output[$x]['id']);
+		// 	echo "<br>";
+		// }
 		// for($out)
+		return $output;
 
 	}
 
@@ -275,16 +279,41 @@
 		return $output;
 	}
 
+	function findYearsParticipating($id){
+		$query = "select year from player_plays_in_tournament where id=".$id.";";
 
-	// $a['gender'] = 'Male';
-	// // $a['year_low'] = 2001;
-	// // $a['year_high'] = 2001;
+		$output = execute($query);
 
-	// // $a['sport'] = 'football';
-	// // $a['goals_low'] = 50;
+		return $output;
+	}
+
+	function findSports($id){
+		global $sports;
+		$s = [];
+		foreach ($sports as $sport) {
+			$query = "select * from ".$sport."_player_stats where player_id=".$id.";";
+			// echo $query." <br>";
+			$output = execute($query);
+			// var_dump($output);
+			// echo "<br";
+			if($output){
+				// echo $id." ".$sport."<br>";
+				$s[] = $sport;
+			}
+		}
+		return $s;
+	}
+
+
+	$a['gender'] = 'Male';
+	// $a['year_low'] = 2001;
+	// $a['year_high'] = 2001;
+
+	// $a['sport'] = 'football';
+	// $a['goals_low'] = 50;
 	
 
-	// $a['name'] = "a";
+	$a['name'] = "a";
 	
-	// echo json_encode(getPlayers($a));
+	echo json_encode(getPlayers($a));
 ?>
