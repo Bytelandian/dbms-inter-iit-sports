@@ -52,4 +52,7 @@ $iitcount = count($iitnames);
 
 </table>
 
+
+<input type="submit" id="form_submit" value="Submit"/>
+
 </form>
