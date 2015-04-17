@@ -57,8 +57,8 @@ eventListener(submit, "submit", onsubmit);
 		<form class="set-margin" action="logout.php" method="POST">
 			<input type="submit" class="logout_button" value="Logout"/>  
 		</form>
-		<form class="set-margin" action="player.php" method="GET">
-			<input type="submit" class="logout_button" value="Next Step: Add Players->"/>  
+		<form class="set-margin" action="referee.php" method="GET">
+			<input type="submit" class="logout_button" value="Next Step: Add Referees->"/>  
 		</form>
 		<p class="form-header">IIT participation Details</p>		
 		

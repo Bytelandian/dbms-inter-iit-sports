@@ -40,6 +40,9 @@ $iitcount = count($iitnames);
 		<div class="login">
 		<form class="set-margin" action="logout.php" method="POST">
 			<input type="submit" class="logout_button" value="Logout"/>  
+		</form><br><br>
+		<form class="set-margin" action="player.php" method="GET">
+			<input type="submit" class="logout_button" value="Next Step: Add Players->"/>  
 		</form>
 		<p class="form-header">Referee</p>		
 		<form name="referee" id="referee" action="referee.php">
