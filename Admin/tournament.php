@@ -34,6 +34,9 @@ $iitcount = count($iitnames);
 		</div>-->
 		<br>
 		<div class="login">
+		<form class="set-margin" action="logout.php" method="POST">
+			<input type="submit" class="logout_button" value="Logout"/>  
+		</form>
 		<p class="form-header">Add Tournament</p>		
 		<form class="set-margin" name="tournament_details" id="tournament_details" action="iit_participation.php" onsubmit="FormSubmit()" method="GET">
 

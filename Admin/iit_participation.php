@@ -54,6 +54,12 @@ eventListener(submit, "submit", onsubmit);
 		</div>-->
 		<br>
 		<div class="login">
+		<form class="set-margin" action="logout.php" method="POST">
+			<input type="submit" class="logout_button" value="Logout"/>  
+		</form>
+		<form class="set-margin" action="player.php" method="GET">
+			<input type="submit" class="logout_button" value="Next Step: Add Players->"/>  
+		</form>
 		<p class="form-header">IIT participation Details</p>		
 		
 
