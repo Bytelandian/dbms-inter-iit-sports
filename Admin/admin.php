@@ -65,6 +65,19 @@
 
 	}
 
+	else if (isset($_GET['team_form_submit']))
+	{
+//		echo $_GET['year'];
+		$tsize=$_GET['teamsize'];
+		$spsr=$_GET['sponsor'];
+		$coach=$_GET['coach'];
+		$jrsey=$_GET['jersey'];
+		$iit=$_GET['iitname'];
+		echo "INSERT INTO team(team_size,sponsor,coach,jersey,name) VALUES ($tsize,'$spsr','$coach','$jrsey','$iit')";
+	//	return execute_query("INSERT INTO team(team_size,sponsor,coach,jersey,name) VALUES ($tsize,'$spsr','$coach','$jrsey','$iit')");
+
+	}
+
 	function execute_query($query)
 	{
 		include('config.php');
