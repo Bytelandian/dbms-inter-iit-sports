@@ -14,6 +14,7 @@
 		return execute_query("Select * from player where iit='$iitname'");
 
 	}
+
 	if (isset($_GET['tournament_details_form_submit']))
 	{
 //		echo $_GET['year'];
@@ -59,11 +60,10 @@
 	{
 //		echo $_GET['year'];
 		$nm=$_GET['name'];
-		//echo "INSERT INTO player(name,date_of_birth,gender, email_id,address,iit) VALUES ('$nm','$dobirth','$gnd','$mailid','$add','$iit_name')";
+	//	echo "INSERT INTO referee(name) VALUES ('$nm')";
 		return execute_query("INSERT INTO referee(name) VALUES ('$nm')");
 
 	}
-	
 
 	function execute_query($query)
 	{
@@ -77,6 +77,6 @@
 		
 		return $output;
 	}
-	echo json_encode(getplayernamesbyiit('IIT BHU'));
+	
 
 ?>

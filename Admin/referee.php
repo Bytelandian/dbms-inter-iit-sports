@@ -55,7 +55,7 @@ session_start();
 
 			
 					<input class="form-control" type="text"  id="name" name="name" placeholder="Referee Name"><br><br>
-					<input type="submit" name="referee_form_submit" value="Submit"/></td>
+					<input type="submit" name="referee_form_submit" value="Submit"/>
 				
 
 		</form>
