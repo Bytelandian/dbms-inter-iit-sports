@@ -17,6 +17,42 @@ $playercount = count($playernames);
   <title>Cricket Match</title>
 	<link rel="stylesheet" type="text/css" href="css/forms.css">
     <script src="js/prefixfree.min.js"></script>
+    <script src="js/jquery-1.10.2.js"></script>
+  <script src="js/jquery-ui.js"></script>
+
+  <script type="text/javascript">
+  	$(function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#venue" ).autocomplete({
+      source: availableTags
+    });
+  });
+  </script>
+
+
 
 </head>
 
@@ -29,21 +65,23 @@ $playercount = count($playernames);
 		<p class="form-header">Cricket Match Details</p>
 		<form class="set-margin" name="cricket_match_details" id="cricket_match_details" action="cricket_team_stats.php" method="GET">
 
-			
+			Date<br>
 			<input class="form-control" id="date" name="date" type="date" placeholder="Date"><br><br>
 
-			
+			Winner<br>
 			<select  id="winner" name="winner">
 				<?php
 				for ($i=0; $i < $iitcount ; $i++)
 				{
-					echo "<option value=\"".$iitnames[$i]['name']."\"> ".$iitnames[$i]['name'].", ".$iitnames[$i]['name']." </option>" ;
+					echo "<option value=\"".$iitnames[$i]['id']."\"> ".$iitnames[$i]['name'] ."</option>" ;
 				}
 				 ?>
 			</select><br><br>
+			
+			Venue<br>
 			<input class="form-control"  id="venue" name="venue" type="text" placeholder="Venue"><br><br>
 
-			
+			Man Of The Match<br>
 			<select  id="motm" name="motm">
 				<?php
 				for ($i=0; $i < $playercount ; $i++)
@@ -53,7 +91,7 @@ $playercount = count($playernames);
 				 ?>
 			</select><br><br>
 
-			
+			Toss Won<br>
 			<select  id="tosswon" name="tosswon">
 				<option value="1">1</option>
 				<?php
@@ -65,7 +103,7 @@ $playercount = count($playernames);
 			</select><br><br>
 
 
-			
+			Batting First<br>
 			<select  id="batting" name="batting">
 				<option value="1">1</option>
 				<?php
