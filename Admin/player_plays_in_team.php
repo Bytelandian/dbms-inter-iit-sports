@@ -2,7 +2,8 @@
 include 'admin.php';
 $iitnames = getiitnames();
 $iitcount = count($iitnames);
-
+$playernames = getplayernames();
+$playercount = count($playernames);
 session_start();
  if (!isset($_SESSION['admin_username'])){
  	header("Location: login.php");
@@ -47,12 +48,33 @@ session_start();
 			<input type="submit" class="logout_button" value="Next Step: Add A New Team->"/>  
 		</form>
 		<p class="form-header">Add Player in team</p>		
-		<form class="set-margin" name="team_details" id="team_details" action="player_plays_in_team.php">
+		<form name="team_details" id="team_details" action="player_plays_in_team.php">
 
 
+			<p>Player </p>
+			<select  id="playerid" name="playerid">
+				<?php
+				for ($i=0; $i < $playercount ; $i++)
+				{
+					echo "<option value=\"".$playernames[$i]['id']."\"> ".$playernames[$i]['name'].", ".$playernames[$i]['iit']. ", DOB: ".$playernames[$i]['dob'] ." </option>" ;
+				}
+				 ?>
+			</select><br><br>
+			<!-- <input class="form-control"  id="pid" name="pid" type="text" placeholder="Player_id" hidden value=<?php echo $tid;?>><br><br> -->
+			
 
-			<input class="form-control"  id="pid" name="pid" type="text" placeholder="Player_id" hidden value=<?php echo $tid;?>><br><br>
-			<input class="form-control" type="text"  id="team" name="team" placeholder="team id"><br><br>
+
+			Team<br>
+			<select  id="team" name="team">
+				<!-- <option value="1">1</option> -->
+				<?php
+				for ($i=0; $i < $teamcount ; $i++)
+				{
+					echo "<option value=\"".$iitnames[$i]['name']."\"> ".$iitnames[$i]['name']." </option>" ;
+				}
+				 ?>
+			</select><br><br>
+			<!-- <input class="form-control" type="text"  id="team" name="team" placeholder="team id"><br><br> -->
 
 			<input type="submit" name="player_in_team_form_submit" value="Submit"/>  
 
