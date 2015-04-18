@@ -169,7 +169,7 @@ session_start();
 
 	else if (isset($_GET['cricket_player_stats_team1_form_submit']))
 	{
-		$match_id=$_GET[$_SESSION['matchid']];
+		$match_id=$_SESSION['match_id'];
 		$playername=$_GET['playername'];
 		//catches=&t1extra=&t1overs=&4s=&6s=&dots=&balls=&outs=&runs=&overs=&maidens=&extras=&wides=&noballs=&byes=&sixes=&legbyes=&wickets=
 		$catches=$_GET['catches'];
@@ -190,9 +190,7 @@ session_start();
 		$legbyes=$_GET['legbyes'];
 		$wickets=$_GET['wickets'];
 
-		echo "INSERT INTO `cricket_player_stats`(`player_id`, `match_id`, `catches`, `stumps`, `runs_scored`, 
-			`4s`, `6s`, `dots`, `balls_faced`, `out_`, `runs`, `overs`, `maiden`, `extra_runs`, `wide`, `noballs`, `byes`, `legbyes`, `wickets`) 
-		VALUES ($playername,$match_id,$catches,$t1extra,$t1overs,$sixs,$fors,$dots,$balls,$outs,$runs,$overs,$maidens,$extras,$wides,$noballs,$sixes,$legbyes,$wickets)";
+		echo "INSERT INTO `cricket_player_stats`(`player_id`, `match_id`, `catches`, `stumps`, `runs_scored`, `4s`, `6s`, `dots`, `balls_faced`, `out_`, `runs`, `overs`, `maiden`, `extra_runs`, `wide`, `noballs`, `byes`, `legbyes`, `wickets`) VALUES ($playername,$match_id,$catches,$t1extra,$t1overs,$sixs,$fors,$dots,$balls,$outs,$runs,$overs,$maidens,$extras,$wides,$noballs,$sixes,$legbyes,$wickets)");
 	}
 
 	function execute_query($query)
