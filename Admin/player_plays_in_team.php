@@ -3,35 +3,72 @@ include 'admin.php';
 $iitnames = getiitnames();
 $iitcount = count($iitnames);
 
-//$year = getyears();
-//$yearcount = count($year);
+session_start();
+ if (!isset($_SESSION['admin_username'])){
+ 	header("Location: login.php");
+ }
+ 
 
 ?>
 
-<head>
-	<link rel="stylesheet" type="text/css" href="css/forms.css">
-</head>
+
+<!DOCTYPE html>
+<html>
 <br><br><br>
-<h2 align="center">Player Team</h2>
-<form name="player_team" id="player_team" action=".">
+<h2 align="center">Tournament_Details</h2>
 
-<table align="center">
+<head>
 
-	<tr>
-		<td><label for="disabledSelect">Player_id</label></td>
-		<td><input class="form-control"  id="pid" name="pid" type="text" placeholder="Player_id"></td>
-	</tr>
-	<tr>
-		<td><label for="disabledSelect">Team ID</label></td>
-		<td><input class="form-control" type="text"  id="team" name="team" placeholder="team id">
-		</td>
-	</tr>
-	<tr><td></td>
-	<td><input type="submit" id="form_submit" value="Submit"/></td>
-	</tr>
+  <meta charset="UTF-8">
 
-</table>
+  <title>Add Player in team</title>
+
+    <style>
+
+</style>
+	<link rel="stylesheet" type="text/css" href="css/forms.css">
+    <script src="js/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+
+  <div class="body"></div>
+		<div class="grad"></div>
+		<!--<div class="header">
+			<div>Site<span>Random</span></div>
+		</div>-->
+		<br>
+		<div class="login">
+		<form class="set-margin" action="logout.php" method="POST">
+			<input type="submit" class="logout_button" value="Logout"/>  
+		</form>
+		<form class="set-margin" action="team.php" method="GET">
+			<input type="submit" class="logout_button" value="Next Step: Add A New Team->"/>  
+		</form>
+		<p class="form-header">Add Player in team</p>		
+		<form class="set-margin" name="team_details" id="team_details" action="player_plays_in_team.php">
 
 
 
-</form>
+			<input class="form-control"  id="pid" name="pid" type="text" placeholder="Player_id" hidden value=<?php echo $tid;?>><br><br>
+			<input class="form-control" type="text"  id="team" name="team" placeholder="team id"><br><br>
+
+			<input type="submit" name="player_in_team_form_submit" value="Submit"/>  
+
+
+			
+		
+		</form>
+
+				<!--<input type="text" placeholder="username" name="user"><br>
+				<input type="password" placeholder="password" name="password"><br>
+				<input type="button" value="Login">-->
+		</div>
+
+  <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
+
+</body>
+
+</html>
+
