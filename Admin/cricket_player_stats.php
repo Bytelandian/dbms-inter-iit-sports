@@ -59,8 +59,8 @@ $playercount = count($playernames);
 
 			<br><br>
 
-			<input type="submit" id="cricket_player_stats_team1_form_submit" value="Team 1 player"/>
-			<input type="submit" id="cricket_player_stats_team2_form_submit" value="Team 2 player"/>
+			<input type="submit" name="cricket_player_stats_team1_form_submit" value="Team 1 player"/>
+			<input type="submit" name="cricket_player_stats_team2_form_submit" value="Team 2 player"/>
 			</form>
 
 			<br><br><br><br><br><br>
