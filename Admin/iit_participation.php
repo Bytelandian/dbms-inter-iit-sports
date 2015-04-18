@@ -8,6 +8,12 @@ session_start();
  	header("Location: login.php");
  }
 
+ if (isset($_GET['year'])){
+ 	$_SESSION['year']=$_GET['year'];
+ 	
+
+ }
+
 
 ?>
 
@@ -70,7 +76,7 @@ eventListener(submit, "submit", onsubmit);
 		
 
 
-<form name="iit_participation_form_submit" id="iit_participation_form_submit">
+<form class="set-margin" name="iit_participation_form_submit" id="iit_participation_form_submit">
 
 	<!--<label for="disabledSelect">Year</label>-->
 		<input class="form-control"  id="year" name="year" type="text" placeholder="year"><br><br>
