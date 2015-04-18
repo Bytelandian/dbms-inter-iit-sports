@@ -7,12 +7,14 @@
 			foreach ($input['iit'] as $value) {
 				if(!$x){
 					$x = true;
-					$q ="select id from player_belongs_to_iit where name in ('".$value."'";
+					$q ="select id from player where iit in ('".$value."'";
 				}else{
 					$q = $q.",'".$value."'";
 				}
 			}
-			$query[]=$q.")";
+			$q = $q.")";
+			$query[]=$q;
+			// echo json_encode($query);
 		}
 		if(isset($input['year_low']) && isset($input['year_high'])){
 			$query[]="select id from player_plays_in_tournament where year>=".$input['year_low']." and year<=".$input['year_high'];
@@ -27,7 +29,7 @@
 					$q = $q." union (select player_id from `".$value."_player_stats`)";
 				}
 			}
-			$query[]=$q;
+			$query[]="select * from (".$q.") as X";
 		}
 
 		$x = false;
@@ -38,6 +40,9 @@
 			}else{
 				$filter=$filter." intersect (".$k.")";
 			}
+		}
+		if(isset($filter)){
+			$filter = "select * from (".$filter.") as Y";
 		}
 
 		$f = false;
@@ -69,7 +74,7 @@
 		
 		$finalQ = "select * from player ".$where.";";
 
-		// echo $finalQ."<br>";
+		echo $finalQ."<br>";
 
 		$output = execute($finalQ);
 
@@ -249,7 +254,20 @@
 		$finalQ = $finalQ." ;";
 		echo $finalQ;
 
-		return execute($finalQ);
+
+		$output = execute($finalQ);
+
+		var_dump($output);
+		if($sport != 'athletics'){
+			for($x = 0; $x < count($output) ; ++$x){
+				// var_dump($output[$x]);
+				$output[$x]['teams'] = findTeams($output[$x]['match_id'],$sport);
+				$output[$x]['host'] = findHost(date("Y",strtotime($output[$x]['date'])));
+				// echo date("Y",$output[$x]['date'])."<br>";
+			}
+		}
+
+		var_dump($output);
 
 	}
 
@@ -304,16 +322,51 @@
 		return $s;
 	}
 
+	function findTeams($match_id,$sport){
+		$query = "select name from ".$sport."_match natural join team where match_id=".$match_id.";";
 
-	$a['gender'] = 'Male';
-	// $a['year_low'] = 2001;
+		$output = execute($query);
+
+		return $output;
+
+	}
+
+	function findHost($year){
+		$query = "select host from tournament where year=".$year.";";
+
+		$output = execute($query);
+
+		return $output;
+
+	}
+
+	function getIITNames(){
+		$query = "select name from iit;";
+
+		$output = execute($query);
+
+		return $output;
+	}
+
+	function getTournaments(){
+		$query = "select year,host from tournament;";
+
+		$output = execute($query);
+
+		return $output;
+
+	}
+
+
+	$a['gender'] = 'male';
+	$a['iit'] = array('IIT Bombay');
 	// $a['year_high'] = 2001;
 
-	// $a['sport'] = 'football';
+	$a['sport'] = array('hockey','volleyball');
 	// $a['goals_low'] = 50;
 	
 
-	$a['name'] = "a";
+	// $a['name'] = "a";
 	
 	echo json_encode(getPlayers($a));
 ?>
