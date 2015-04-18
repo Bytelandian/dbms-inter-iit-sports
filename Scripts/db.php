@@ -332,7 +332,7 @@
 	}
 
 	function findHost($year){
-		$query = "select host from tournament where year=".$year.";";
+		$query = "select * from tournament where year=".$year.";";
 
 		$output = execute($query);
 
@@ -385,6 +385,14 @@
 		return $output;
 	}
 
+	function getPointsTallyFor($year){
+		$query = "select name,score_total from iit_participation where year=".$year." order by score_total desc";
+		
+		$output = execute($query);
+
+		return $output;
+	}
+
 
 	// $a['gender'] = 'male';
 	$a['iit'] = array('IIT Bombay');
@@ -396,5 +404,5 @@
 
 	// $a['name'] = "a";
 	
-	var_dump(hostDetailsFor('IIT Bombay'));
+	var_dump(getPointsTallyFor(2014));
 ?>

@@ -197,9 +197,36 @@ session_start();
 		$legbyes=$_GET['legbyes'];
 		$wickets=$_GET['wickets'];
 
+//		echo "INSERT INTO `cricket_player_stats`(`player_id`, `match_id`, `catches`, `stumps`, `runs_scored`, `4s`, `6s`, `dots`, `balls_faced`, `out_`, `runs`, `overs`, `maiden`, `extra_runs`, `wide`, `noballs`, `byes`, `legbyes`, `wickets`) VALUES ($playername,$match_id,$catches,$t1extra,$t1overs,$sixs,$fors,$dots,$balls,$outs,$runs,$overs,$maidens,$extras,$wides,$noballs,$sixes,$legbyes,$wickets)";
 		execute_query("INSERT INTO `cricket_player_stats`(`player_id`, `match_id`, `catches`, `stumps`, `runs_scored`, `4s`, `6s`, `dots`, `balls_faced`, `out_`, `runs`, `overs`, `maiden`, `extra_runs`, `wide`, `noballs`, `byes`, `legbyes`, `wickets`) VALUES ($playername,$match_id,$catches,$t1extra,$t1overs,$sixs,$fors,$dots,$balls,$outs,$runs,$overs,$maidens,$extras,$wides,$noballs,$sixes,$legbyes,$wickets)");
 	}
 
+	else if (isset($_GET['cricket_player_stats_team2_form_submit']))
+	{
+		$match_id=$_SESSION['match_id'];
+		$playername=$_GET['playername'];
+		//catches=&t1extra=&t1overs=&4s=&6s=&dots=&balls=&outs=&runs=&overs=&maidens=&extras=&wides=&noballs=&byes=&sixes=&legbyes=&wickets=
+		$catches=$_GET['catches'];
+		$t1extra=$_GET['t1extra'];
+		$t1overs=$_GET['t1overs'];
+		$sixs=$_GET['6s'];
+		$fors=$_GET['4s'];
+		$dots=$_GET['dots'];
+		$balls=$_GET['balls'];
+		$outs=$_GET['outs'];
+		$runs=$_GET['runs'];
+		$overs=$_GET['overs'];
+		$maidens=$_GET['maidens'];
+		$extras=$_GET['extras'];
+		$wides=$_GET['wides'];
+		$noballs=$_GET['noballs'];
+		$sixes=$_GET['sixes'];
+		$legbyes=$_GET['legbyes'];
+		$wickets=$_GET['wickets'];
+
+//		echo "INSERT INTO `cricket_player_stats`(`player_id`, `match_id`, `catches`, `stumps`, `runs_scored`, `4s`, `6s`, `dots`, `balls_faced`, `out_`, `runs`, `overs`, `maiden`, `extra_runs`, `wide`, `noballs`, `byes`, `legbyes`, `wickets`) VALUES ($playername,$match_id,$catches,$t1extra,$t1overs,$sixs,$fors,$dots,$balls,$outs,$runs,$overs,$maidens,$extras,$wides,$noballs,$sixes,$legbyes,$wickets)";
+		execute_query("INSERT INTO `cricket_player_stats`(`player_id`, `match_id`, `catches`, `stumps`, `runs_scored`, `4s`, `6s`, `dots`, `balls_faced`, `out_`, `runs`, `overs`, `maiden`, `extra_runs`, `wide`, `noballs`, `byes`, `legbyes`, `wickets`) VALUES ($playername,$match_id,$catches,$t1extra,$t1overs,$sixs,$fors,$dots,$balls,$outs,$runs,$overs,$maidens,$extras,$wides,$noballs,$sixes,$legbyes,$wickets)");
+	}
 	function execute_query($query)
 	{
 		include ('config.php');

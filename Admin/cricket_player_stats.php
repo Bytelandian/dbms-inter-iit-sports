@@ -5,6 +5,11 @@ $iitcount = count($iitnames);
 
 $playernames = getplayernames();
 $playercount = count($playernames);
+session_start();
+ if (!isset($_SESSION['admin_username'])){
+ 	header("Location: login.php");
+ }
+
 ?>
 
 <!DOCTYPE html>
