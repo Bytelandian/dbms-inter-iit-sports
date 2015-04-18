@@ -357,6 +357,26 @@
 
 	}
 
+	function findWinners($sport){
+		$query = 	"select A.name as runner,B.name as winner,Q.yr as year FROM (SELECT * FROM ".
+					$sport."_match NATURAL JOIN ".$sport."_team_stats) as W, (SELECT match_id AS matid, winner AS win,YEAR( DATE ) as yr FROM ("
+					.$sport."_match NATURAL JOIN ".$sport."_team_stats)	WHERE isfinal AND team_id = winner GROUP BY yr) AS Q,team as A,team as B "
+					."WHERE W.match_id = Q.matid and Q.win=B.team_id and W.team_id=A.team_id and A.team_id<>B.team_id;";
+		$output = execute($query);
+
+		return $output;		
+	}
+
+	function findWinnersForYear($sport, $year){
+		$query = 	"select A.name as runner,B.name as winner,Q.yr as year FROM (SELECT * FROM ".
+					$sport."_match NATURAL JOIN ".$sport."_team_stats) as W, (SELECT match_id AS matid, winner AS win,YEAR( DATE ) as yr FROM ("
+					.$sport."_match NATURAL JOIN ".$sport."_team_stats)	WHERE isfinal AND team_id = winner GROUP BY yr) AS Q,team as A,team as B "
+					."WHERE W.match_id = Q.matid and Q.win=B.team_id and W.team_id=A.team_id and A.team_id<>B.team_id and Q.yr=".$year.";";
+		$output = execute($query);
+
+		return $output;	
+	}
+
 
 	// $a['gender'] = 'male';
 	$a['iit'] = array('IIT Bombay');
@@ -368,5 +388,5 @@
 
 	// $a['name'] = "a";
 	
-	echo json_encode(getMatches($a));
+	var_dump(findWinnersForYear('badminton',2014));
 ?>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 	function getiitnames()
 	{
 		return execute_query("Select name from iit");
@@ -99,16 +100,71 @@
 	else if (isset($_GET['cricket_match_form_submit']))
 	{
 		$date=$_GET['date'];
-		$winner=$_GET['winner'];
+		$temp=$_GET['winner'];
+		$temp2 = $_SESSION['year'];
+		$winner=execute_query("SELECT `team_id` FROM `team` WHERE `name`= '$temp' and `sport`='cricket' and `year`=$temp2")[0]['team_id'];
+
 		$venue=$_GET['venue'];
 		$motm=$_GET['motm'];
-		$tosswon=$_GET['tosswon'];
-		$batting=$_GET['batting'];
+
+		$temp=$_GET['tosswon'];
+		$temp2 = $_SESSION['year'];
+		$tosswon=execute_query("SELECT `team_id` FROM `team` WHERE `name`= '$temp' and `sport`='cricket' and `year`=$temp2")[0]['team_id'];
+
+		$temp=$_GET['batting'];
+		$temp2 = $_SESSION['year'];
+		$batting=execute_query("SELECT `team_id` FROM `team` WHERE `name`= '$temp' and `sport`='cricket' and `year`=$temp2")[0]['team_id'];
+
 		if (isset($_GET['isfinal']))
 			$isfinal=1;
 		else
 			$isfinal=0;
-		echo "INSERT INTO `cricket_match`( `date`, `winner`, `man_of_the_match`, `toss_won`, `venue`, `batting_first`, `isfinal`)VALUES ('$date',$winner,$motm,$tosswon,$venue,$batting,$isfinal)";
+//		echo "INSERT INTO `cricket_match`( `date`, `winner`, `man_of_the_match`, `toss_won`, `venue`, `batting_first`, `isfinal`)VALUES ('$date',$winner,$motm,$tosswon,'$venue',$batting,$isfinal)";
+		execute_query("INSERT INTO `cricket_match`( `date`, `winner`, `man_of_the_match`, `toss_won`, `venue`, `batting_first`, `isfinal`)VALUES ('$date',$winner,$motm,$tosswon,'$venue',$batting,$isfinal)");
+
+//		echo "SELECT `match_id` FROM `cricket_match` WHERE `date`='$date', `winner` = $winner, `man_of_the_match`=$motm, `toss_won` = $tosswon, `venue` = '$venue', `batting_first`=$batting, `isfinal` = $isfinal";
+		$_SESSION['match_id']=execute_query("SELECT `match_id` FROM `cricket_match` WHERE `date`='$date' and  `winner` = $winner and `man_of_the_match`=$motm and `toss_won` = $tosswon and `venue` = '$venue' and `batting_first`=$batting and `isfinal` = $isfinal")[0]['match_id'];
+
+//		echo "IASD".$_SESSION['match_id'];
+
+		
+	}
+	else if ($_GET['cricket_team_stats_form_submit'])
+	{
+		$temp=$_GET['team1'];
+		$temp2 = $_SESSION['year'];
+		$team1=execute_query("SELECT `team_id` FROM `team` WHERE `name`= '$temp' and `sport`='cricket' and `year`=$temp2")[0]['team_id'];
+
+		$t1runs=$_GET['t1runs'];
+		$t1wickets=$_GET['t1wickets'];
+		$t1extra=$_GET['t1extra'];
+		$t1overs=$_GET['t1overs'];
+		$t1runs=$_GET['t1runs'];
+		$t14s=$_GET['t14s'];
+		$t16s=$_GET['t16s'];
+
+		$match_id=$_SESSION['match_id'];
+
+//		echo "INSERT INTO `cricket_team_stats`(`team_id`, `match_id`, `runs_scored`, `overs_played`, `4s`, `6s`, `wickets`, `extras`) VALUES ($team1,$match_id,$t1runs,$t1overs,$t14s,$t16s,$t1wickets,$t1extra)";
+		execute_query("INSERT INTO `cricket_team_stats`(`team_id`, `match_id`, `runs_scored`, `overs_played`, `4s`, `6s`, `wickets`, `extras`) VALUES ($team1,$match_id,$t1runs,$t1overs,$t14s,$t16s,$t1wickets,$t1extra)");
+
+
+
+		$temp=$_GET['team2'];
+		$temp2 = $_SESSION['year'];
+		$team2=execute_query("SELECT `team_id` FROM `team` WHERE `name`= '$temp' and `sport`='cricket' and `year`=$temp2")[0]['team_id'];
+		
+		$t2runs=$_GET['t2runs'];
+		$t2wickets=$_GET['t2wickets'];
+		$t2extra=$_GET['t2extra'];
+		$t2overs=$_GET['t2overs'];
+		$t2runs=$_GET['t2runs'];
+		$t24s=$_GET['t24s'];
+		$t26s=$_GET['t26s'];
+
+		execute_query("INSERT INTO `cricket_team_stats`(`team_id`, `match_id`, `runs_scored`, `overs_played`, `4s`, `6s`, `wickets`, `extras`) VALUES ($team2,$match_id,$t2runs,$t2overs,$t24s,$t26s,$t2wickets,$t2extra)");
+
+
 	}
 
 	else if (isset($_GET['cricket_player_stats_team1_form_submit']))
