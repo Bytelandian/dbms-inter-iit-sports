@@ -29,11 +29,10 @@ $playercount = count($playernames);
 			<form class="set-margin" name="cricket_team_stats_form" id="cricket_team_stats_form"  action="cricket_player_stats.php" method="GET">
 			<p>TEAM 1</p> <br><br>
 			<select  id="team1" name="team1">
-				<option value="1">1</option>
 				<?php
-				for ($i=0; $i < $teamcount ; $i++)
+				for ($i=0; $i < $iitcount ; $i++)
 				{
-					echo "<option value=\"".$iitnames[$i]['name']."\"> ".$iitnames[$i]['name'].", ".$iitnames[$i]['name']." </option>" ;
+					echo "<option value=\"".$iitnames[$i]['name']."\"> ".$iitnames[$i]['name'] ."</option>" ;
 				}
 				 ?>
 			</select><br><br>
@@ -47,11 +46,10 @@ $playercount = count($playernames);
 			<br><br><br><br>
 			<p>TEAM 2</p><br><br>
 			<select  id="team2" name="team2">
-				<option value="1">1</option>
 				<?php
-				for ($i=0; $i < $teamcount ; $i++)
+				for ($i=0; $i < $iitcount ; $i++)
 				{
-					echo "<option value=\"".$iitnames[$i]['name']."\"> ".$iitnames[$i]['name'].", ".$iitnames[$i]['name']." </option>" ;
+					echo "<option value=\"".$iitnames[$i]['name']."\"> ".$iitnames[$i]['name'] ."</option>" ;
 				}
 				 ?>
 			</select><br><br>
@@ -64,7 +62,7 @@ $playercount = count($playernames);
 			<input class="form-control" type="text"  id="t26s" name="t26s" placeholder="Sixes"><br><br>
 
 			<br><br>
-			<input type="submit" id="cricket_team_stats_form_submit" value="Submit"/>
+			<input type="submit" name="cricket_team_stats_form_submit" value="Submit"/>
 			</form>
 
 
