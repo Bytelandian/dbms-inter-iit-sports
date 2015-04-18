@@ -45,7 +45,7 @@ session_start();
 			<input type="submit" class="logout_button" value="Next Step: Add Teams->"/>  
 		</form>
 		<p class="form-header">Add Player</p>		
-		<form name="player_form_submit" id="player_form_submit" action="player.php" method="GET">
+		<form class="set-margin" name="player_form_submit" id="player_form_submit" action="player.php" method="GET">
 
 
 

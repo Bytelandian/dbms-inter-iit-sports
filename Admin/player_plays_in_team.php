@@ -47,7 +47,7 @@ session_start();
 			<input type="submit" class="logout_button" value="Next Step: Add A New Team->"/>  
 		</form>
 		<p class="form-header">Add Player in team</p>		
-		<form name="team_details" id="team_details" action="player_plays_in_team.php">
+		<form class="set-margin" name="team_details" id="team_details" action="player_plays_in_team.php">
 
 
 

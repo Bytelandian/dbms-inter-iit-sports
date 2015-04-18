@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 18, 2015 at 03:21 AM
+-- Generation Time: Apr 18, 2015 at 05:35 AM
 -- Server version: 5.5.41-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.8
 
@@ -21,6 +21,25 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `dbms` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `dbms`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE IF NOT EXISTS `admin` (
+  `username` varchar(50) NOT NULL,
+  `pass` varchar(30) NOT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`username`, `pass`) VALUES
+('aniket', 'asdf');
 
 -- --------------------------------------------------------
 
@@ -322,7 +341,7 @@ CREATE TABLE IF NOT EXISTS `basketball_team_stats` (
 
 CREATE TABLE IF NOT EXISTS `cricket_match` (
   `match_id` int(11) NOT NULL AUTO_INCREMENT,
-  `Date` date NOT NULL,
+  `date` date NOT NULL,
   `winner` int(11) NOT NULL,
   `man_of_the_match` int(11) NOT NULL,
   `toss_won` int(11) NOT NULL,
@@ -339,7 +358,7 @@ CREATE TABLE IF NOT EXISTS `cricket_match` (
 -- Dumping data for table `cricket_match`
 --
 
-INSERT INTO `cricket_match` (`match_id`, `Date`, `winner`, `man_of_the_match`, `toss_won`, `venue`, `batting_first`, `isfinal`) VALUES
+INSERT INTO `cricket_match` (`match_id`, `date`, `winner`, `man_of_the_match`, `toss_won`, `venue`, `batting_first`, `isfinal`) VALUES
 (1001, '2015-12-11', 101, 1231, 101, 'Ground-1', 102, 0),
 (1002, '2015-12-11', 102, 1234, 104, 'Ground-2', 103, 0),
 (1003, '2015-12-11', 103, 1232, 102, 'Ground-3', 105, 0),
@@ -647,6 +666,9 @@ CREATE TABLE IF NOT EXISTS `iit_participation` (
 --
 
 INSERT INTO `iit_participation` (`year`, `name`, `contingent_size`, `score_total`, `sports_officer`, `sports_secretary`) VALUES
+(2014, 'IIT BHU', 290, 8, 'Vishal Singh', 'Gaurav'),
+(2014, 'IIT Bombay', 250, 13, 'Saurabh Kumar', 'Suresh Kumar'),
+(2014, 'IIT Guwahati', 180, 10, 'VK Singh', 'Sanjana Singh'),
 (2015, 'IIT BHU', 290, 8, 'Vishal Singh', 'Gaurav'),
 (2015, 'IIT Bombay', 250, 13, 'Saurabh Kumar', 'Suresh Kumar'),
 (2015, 'IIT Guwahati', 180, 10, 'VK Singh', 'Sanjana Singh'),
@@ -723,13 +745,13 @@ INSERT INTO `lawntennis_match` (`match_id`, `winner`, `date`, `venue`, `isfinal`
 --
 
 CREATE TABLE IF NOT EXISTS `lawntennis_player_stats` (
-  `playerid` int(11) NOT NULL,
+  `player_id` int(11) NOT NULL,
   `match_id` int(11) NOT NULL,
   `player_no_aces` int(11) NOT NULL,
   `player_no_faults` int(11) NOT NULL,
   `player_no_sets_won` int(11) NOT NULL,
   `player_no_games_won` int(11) NOT NULL,
-  PRIMARY KEY (`playerid`,`match_id`),
+  PRIMARY KEY (`player_id`,`match_id`),
   KEY `match_id` (`match_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -737,7 +759,7 @@ CREATE TABLE IF NOT EXISTS `lawntennis_player_stats` (
 -- Dumping data for table `lawntennis_player_stats`
 --
 
-INSERT INTO `lawntennis_player_stats` (`playerid`, `match_id`, `player_no_aces`, `player_no_faults`, `player_no_sets_won`, `player_no_games_won`) VALUES
+INSERT INTO `lawntennis_player_stats` (`player_id`, `match_id`, `player_no_aces`, `player_no_faults`, `player_no_sets_won`, `player_no_games_won`) VALUES
 (1231, 1001, 1, 4, 3, 12),
 (1231, 1002, 0, 4, 2, 14),
 (1231, 1003, 1, 9, 3, 12),
@@ -826,41 +848,15 @@ CREATE TABLE IF NOT EXISTS `player` (
 --
 
 INSERT INTO `player` (`id`, `name`, `date_of_birth`, `gender`, `email_id`, `address`, `iit`) VALUES
-(1230, 'Gaurav', '1994-08-19', 'male', 'gauravmi@iitrpr.ac.in', '', 'IIT BHU'),
-(1231, 'Yash', '0000-00-00', 'male', 'abc@gmail.com', 'IIT Ropar NangalRoad', 'IIT BHU'),
-(1232, 'Shubham', '0000-00-00', 'male', 'abcd@gmail.com', 'Chandigarh', 'IIT BHU'),
-(1233, 'Kiara', '1994-08-07', 'female', 'abcde@gmail.com', 'Mumbai', 'IIT BHU'),
-(1234, 'Saket', '0000-00-00', 'male', 'abc94@gmail.com', 'Delhi', 'IIT BHU'),
+(1230, 'Gaurav', '1994-08-19', 'male', 'gauravmi@iitrpr.ac.in', '', 'IIT Bombay'),
+(1231, 'Yash', '0000-00-00', 'male', 'abc@gmail.com', 'IIT Ropar NangalRoad', 'IIT Delhi'),
+(1232, 'Shubham', '0000-00-00', 'male', 'abcd@gmail.com', 'Chandigarh', 'IIT Indore'),
+(1233, 'Kiara', '1994-08-07', 'female', 'abcde@gmail.com', 'Mumbai', 'IIT Madras'),
+(1234, 'Saket', '0000-00-00', 'male', 'abc94@gmail.com', 'Delhi', 'IIT Patna'),
 (1235, 'AK', '1994-11-02', 'female', 'abcxy@gmail.com', 'Mandi', 'IIT BHU'),
-(1236, 'Chandu', '1994-01-06', 'male', 'abcmn@gmail.com', 'Ropar NangalRoad', 'IIT BHU'),
-(1237, 'Rohan', '1994-05-07', 'male', 'abc05@gmail.com', 'Ropar NangalRoad', 'IIT BHU'),
-(1238, 'Sachi', '1994-08-27', 'male', 'abcd@gmail.com', 'New Delhi', 'IIT BHU');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `player_belongs_to_iit`
---
-
-CREATE TABLE IF NOT EXISTS `player_belongs_to_iit` (
-  `name` varchar(64) NOT NULL,
-  `id` int(11) NOT NULL,
-  PRIMARY KEY (`name`,`id`),
-  KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `player_belongs_to_iit`
---
-
-INSERT INTO `player_belongs_to_iit` (`name`, `id`) VALUES
-('IIT Ropar', 1231),
-('IIT Bombay', 1232),
-('IIT Kanpur', 1233),
-('IIT Mandi', 1234),
-('IIT Roorkee', 1235),
-('IIT Madras', 1236),
-('IIT Delhi', 1237);
+(1236, 'Chandu', '1994-01-06', 'male', 'abcmn@gmail.com', 'Ropar NangalRoad', 'IIT Kanpur'),
+(1237, 'Rohan', '1994-05-07', 'male', 'abc05@gmail.com', 'Ropar NangalRoad', 'IIT Ropar'),
+(1238, 'Sachi', '1994-08-27', 'male', 'abcd@gmail.com', 'New Delhi', 'IIT Mandi');
 
 -- --------------------------------------------------------
 
@@ -1571,7 +1567,7 @@ ALTER TABLE `lawntennis_match`
 -- Constraints for table `lawntennis_player_stats`
 --
 ALTER TABLE `lawntennis_player_stats`
-  ADD CONSTRAINT `lawntennis_player_stats_ibfk_1` FOREIGN KEY (`playerid`) REFERENCES `player` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `lawntennis_player_stats_ibfk_3` FOREIGN KEY (`player_id`) REFERENCES `player` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `lawntennis_player_stats_ibfk_2` FOREIGN KEY (`match_id`) REFERENCES `lawntennis_match` (`match_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -1593,13 +1589,6 @@ ALTER TABLE `lawn_tennis_set`
 --
 ALTER TABLE `player`
   ADD CONSTRAINT `player_ibfk_1` FOREIGN KEY (`iit`) REFERENCES `iit` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `player_belongs_to_iit`
---
-ALTER TABLE `player_belongs_to_iit`
-  ADD CONSTRAINT `player_belongs_to_iit_ibfk_1` FOREIGN KEY (`name`) REFERENCES `iit` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `player_belongs_to_iit_ibfk_2` FOREIGN KEY (`id`) REFERENCES `player` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `player_injury`
