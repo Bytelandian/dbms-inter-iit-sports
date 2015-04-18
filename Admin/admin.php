@@ -78,6 +78,20 @@
 
 	}
 
+	else if (isset($_GET['cricket_match_form_submit']))
+	{
+		$date=$_GET['date'];
+		$winner=$_GET['winner'];
+		$venue=$_GET['venue'];
+		$motm=$_GET['motm'];
+		$tosswon=$_GET['tosswon'];
+		$batting=$_GET['batting'];
+		if (isset($_GET['isfinal']))
+			$isfinal=1;
+		else
+			$isfinal=0;
+		echo "INSERT INTO `cricket_match`( `date`, `winner`, `man_of_the_match`, `toss_won`, `venue`, `batting_first`, `isfinal`)VALUES ('$date',$winner,$motm,$tosswon,$venue,$batting,$isfinal)";
+	}
 	function execute_query($query)
 	{
 		include('config.php');
