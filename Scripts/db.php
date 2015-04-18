@@ -377,6 +377,14 @@
 		return $output;	
 	}
 
+	function hostDetailsFor($iit){
+		$query = "select year,footfall,chief_guest from tournament where host='".$iit."';";
+
+		$output = execute($query);
+
+		return $output;
+	}
+
 
 	// $a['gender'] = 'male';
 	$a['iit'] = array('IIT Bombay');
@@ -388,5 +396,5 @@
 
 	// $a['name'] = "a";
 	
-	var_dump(findWinnersForYear('badminton',2014));
+	var_dump(hostDetailsFor('IIT Bombay'));
 ?>
