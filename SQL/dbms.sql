@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 18, 2015 at 05:35 AM
+-- Generation Time: Apr 18, 2015 at 07:14 AM
 -- Server version: 5.5.41-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.8
 
@@ -183,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `badminton_match` (
   `isfinal` tinyint(1) NOT NULL,
   PRIMARY KEY (`match_id`),
   KEY `referee_id` (`referee_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1006 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1007 ;
 
 --
 -- Dumping data for table `badminton_match`
@@ -194,7 +194,8 @@ INSERT INTO `badminton_match` (`match_id`, `venue`, `date`, `referee_id`, `winne
 (1002, 'court-2', '2015-12-13', 1, 102, 0),
 (1003, 'court-3', '2015-12-14', 4, 103, 0),
 (1004, 'court-2', '2015-12-15', 3, 104, 0),
-(1005, 'court-1', '2015-12-16', 2, 105, 0);
+(1005, 'court-1', '2015-12-16', 2, 105, 0),
+(1006, 'court-1', '2014-12-16', 2, 105, 1);
 
 -- --------------------------------------------------------
 
@@ -274,9 +275,9 @@ CREATE TABLE IF NOT EXISTS `badminton_team_stats` (
 
 INSERT INTO `badminton_team_stats` (`team_id`, `match_id`, `no_smashes`, `no_drops`, `score`) VALUES
 (101, 1001, 12, 10, 21),
-(102, 1002, 14, 12, 20),
 (103, 1001, 11, 9, 19),
-(104, 1002, 10, 8, 18);
+(104, 1006, 10, 8, 18),
+(105, 1006, 14, 12, 20);
 
 -- --------------------------------------------------------
 
@@ -900,6 +901,7 @@ CREATE TABLE IF NOT EXISTS `player_phone` (
 --
 
 INSERT INTO `player_phone` (`id`, `phone_number`) VALUES
+(1230, '9537483647'),
 (1231, '2147483647'),
 (1232, '2147483647'),
 (1232, '9547483647'),
@@ -908,7 +910,8 @@ INSERT INTO `player_phone` (`id`, `phone_number`) VALUES
 (1234, '9147483647'),
 (1235, '2147483647'),
 (1236, '2147483647'),
-(1237, '2147483647');
+(1237, '2147483647'),
+(1238, '9543583647');
 
 -- --------------------------------------------------------
 
@@ -1234,15 +1237,13 @@ CREATE TABLE IF NOT EXISTS `team` (
 --
 
 INSERT INTO `team` (`team_id`, `team_size`, `sponsor`, `coach`, `jersey`, `name`) VALUES
-(101, 12, 'Adidas', 'S.N. Roy', 'Yellow', 'IIT ROPAR'),
+(101, 12, 'Adidas', 'S.N. Roy', 'Yellow', 'IIT Ropar'),
 (102, 16, 'Reebok', 'Sushant Singh', 'blue', 'IIT Mandi'),
-(103, 12, 'Puma', 'Ashwini', 'Grey', 'IIT KANPUR'),
-(104, 4, 'Adidas', 'Saurav Singh', 'Pink', 'IIT KHARAGPUR'),
-(105, 11, 'UCB', 'Kumar bharat', 'Black', 'IIT INDORE'),
-(106, 12, 'Nike', 'sahir Khan', 'Red', 'IIT PATNA'),
-(107, 16, 'Adidas', 'Kaushal', 'Green', 'IIT DELHI'),
-(108, 11, 'Reebok', 'Gaurav', 'Yellow', 'IIT ROPAR'),
-(109, 8, 'Puma', 'aniket', 'Yellow', 'IIT ROPAR');
+(103, 12, 'Puma', 'Ashwini', 'Grey', 'IIT Kanpur'),
+(104, 4, 'Adidas', 'Saurav Singh', 'Pink', 'IIT Kharagpur'),
+(105, 11, 'UCB', 'Kumar bharat', 'Black', 'IIT Indore'),
+(106, 12, 'Nike', 'sahir Khan', 'Red', 'IIT Patna'),
+(107, 16, 'Adidas', 'Kaushal', 'Green', 'IIT Delhi');
 
 -- --------------------------------------------------------
 
