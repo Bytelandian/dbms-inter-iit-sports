@@ -52,6 +52,8 @@ session_start();
 
 			<!--<label for="disabledSelect">Year</label>-->
 			<input class="form-control" type="text"  id="teamsize" name="teamsize" placeholder="Team size"><br><br>
+
+			<input class="form-control" type="text"  id="sport" name="sport" placeholder="Sport"><br><br>
 			<!--<label for="disabledSelect">Host</label>-->
 			<input class="form-control" type="text" name="sponsor" id="sponsor" placeholder="sponsor"/> <br><br>
 

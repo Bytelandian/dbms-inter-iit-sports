@@ -86,10 +86,16 @@ session_start();
 		$coach=$_GET['coach'];
 		$jrsey=$_GET['jersey'];
 		$iit=$_GET['iitname'];
+
+		$sport=$_GET['sport'];
+		$years=$_SESSION['year'];
+		echo "INSERT INTO team(team_size,sponsor,coach,jersey,name,sport,year) VALUES ($tsize,'$spsr','$coach','$jrsey','$iit','$sport',$years)";
+
 //		echo "INSERT INTO team(team_size,sponsor,coach,jersey,name) VALUES ($tsize,'$spsr','$coach','$jrsey','$iit')";
-		execute_query("INSERT INTO team(sponsor,team_size,coach,jersey,name) VALUES ('$spsr',$tsize,'$coach','$jrsey','$iit')");
+		execute_query("INSERT INTO team(team_size,sponsor,coach,jersey,name,sport,year) VALUES ($tsize,'$spsr','$coach','$jrsey','$iit','$sport',$years)");
 //		echo "SELECT team_id FROM team WHERE team_size=$tsize and sponsor='$spsr' and coach='$coach' and jersey='$jrsey' and name='$iit'";
-		$t=execute_query("SELECT team_id FROM team WHERE sponsor='$spsr' and coach='$coach' and jersey='$jrsey' and name='$iit'");
+		echo "SELECT team_id FROM team WHERE sponsor='$spsr' and coach='$coach' and jersey='$jrsey' and name='$iit' and year=$year and sport='$sport'";
+		$t=execute_query("SELECT team_id FROM team WHERE sponsor='$spsr' and coach='$coach' and jersey='$jrsey' and name='$iit' and year=$years and sport='$sport'");
 		global $tid;
 		//echo "aaloo";
 		$tid = $t[0]['team_id'];
