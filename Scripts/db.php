@@ -36,9 +36,9 @@
 		foreach ($query as $k) {
 			if(!$x){
 				$x = true;
-				$filter = "(".$k.")";
+				$filter = $k;
 			}else{
-				$filter=$filter." intersect (".$k.")";
+				$filter=$filter." and id in (".$k.")";
 			}
 		}
 		if(isset($filter)){
@@ -137,9 +137,9 @@
 		foreach ($query as $k) {
 			if(!$x){
 				$x = true;
-				$filter = "(".$k.")";
+				$filter = $k;
 			}else{
-				$filter=$filter." intersect (".$k.")";
+				$filter=$filter." and match_id in (".$k.")";
 			}
 		}
 
@@ -149,9 +149,9 @@
 			if(isset($input['total_points_low'])){
 				$q = "select match_id from `".$sport."_match` natural join `".$sport."_team_stats` where total_points_scored between ".$input['total_points_low']." and ".$input['total_points_high'];
 				if(isset($filter)){
-					$filter = $filter." intersect (".$q.")";
+					$filter = $filter." and match_id in (".$q.")";
 				}else{
-					$filter = "(".$q.")";
+					$filter = $q;
 				}
 			}
 
@@ -197,9 +197,9 @@
 				}
 
 				if(isset($filter)){
-					$filter = $filter." intersect (".$q.")";
+					$filter = $filter." and match_id in (".$q.")";
 				}else{
-					$filter = "(".$q.")";
+					$filter = $q;
 				}
 			}
 		}else if($sport=='football' || $sport=='hockey'){
@@ -235,9 +235,9 @@
 				}
 
 				if(isset($filter)){
-					$filter = $filter." intersect (".$q.")";
+					$filter = $filter." and match_id in (".$q.")";
 				}else{
-					$filter = "(".$q.")";
+					$filter = $q;
 				}
 			}
 		}else if($sport == 'athletics'){
@@ -358,15 +358,15 @@
 	}
 
 
-	$a['gender'] = 'male';
+	// $a['gender'] = 'male';
 	$a['iit'] = array('IIT Bombay');
 	// $a['year_high'] = 2001;
 
-	$a['sport'] = array('hockey','volleyball');
+	$a['sport'] = 'hockey';
 	// $a['goals_low'] = 50;
 	
 
 	// $a['name'] = "a";
 	
-	echo json_encode(getPlayers($a));
+	echo json_encode(getMatches($a));
 ?>
