@@ -53,9 +53,16 @@ session_start();
 		$mailid=$_GET['email'];
 		$add=$_GET['address'];
 		$iit_name=$_GET['iitname'];
+		$phone1=$_GET['phone1'];
+		$phone2=$_GET['phone2'];
 		//echo "INSERT INTO player(name,date_of_birth,gender, email_id,address,iit) VALUES ('$nm','$dobirth','$gnd','$mailid','$add','$iit_name')";
-		return execute_query("INSERT INTO player(name,date_of_birth,gender, email_id,address,iit) VALUES ('$nm','$dobirth','$gnd','$mailid','$add','$iit_name')");
-
+		execute_query("INSERT INTO player(name,date_of_birth,gender, email_id,address,iit) VALUES ('$nm','$dobirth','$gnd','$mailid','$add','$iit_name')");
+		$val = execute_query("SELECT id FROM player WHERE name='$nm' and date_of_birth='$dobirth' and gender='$gnd' and  email_id='$mailid' and address='$add' and iit='$iit_name'");
+		$p_id=$val[0]['id'];
+		//echo $p_id;
+		execute_query("INSERT INTO `player_phone`(`id`, `phone_number`) VALUES ($p_id,'$phone1')");
+		execute_query("INSERT INTO `player_phone`(`id`, `phone_number`) VALUES ($p_id,'$phone2')");
+		
 	}
 
 	else if (isset($_GET['referee_form_submit']))
@@ -190,7 +197,7 @@ session_start();
 		$legbyes=$_GET['legbyes'];
 		$wickets=$_GET['wickets'];
 
-		echo "INSERT INTO `cricket_player_stats`(`player_id`, `match_id`, `catches`, `stumps`, `runs_scored`, `4s`, `6s`, `dots`, `balls_faced`, `out_`, `runs`, `overs`, `maiden`, `extra_runs`, `wide`, `noballs`, `byes`, `legbyes`, `wickets`) VALUES ($playername,$match_id,$catches,$t1extra,$t1overs,$sixs,$fors,$dots,$balls,$outs,$runs,$overs,$maidens,$extras,$wides,$noballs,$sixes,$legbyes,$wickets)");
+		execute_query("INSERT INTO `cricket_player_stats`(`player_id`, `match_id`, `catches`, `stumps`, `runs_scored`, `4s`, `6s`, `dots`, `balls_faced`, `out_`, `runs`, `overs`, `maiden`, `extra_runs`, `wide`, `noballs`, `byes`, `legbyes`, `wickets`) VALUES ($playername,$match_id,$catches,$t1extra,$t1overs,$sixs,$fors,$dots,$balls,$outs,$runs,$overs,$maidens,$extras,$wides,$noballs,$sixes,$legbyes,$wickets)");
 	}
 
 	function execute_query($query)
