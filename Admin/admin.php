@@ -15,6 +15,7 @@ session_start();
 		return execute_query("Select * from player where iit='$iitname'");
 
 	}
+	$tid=1;
 
 	if (isset($_GET['tournament_details_form_submit']))
 	{
@@ -25,7 +26,7 @@ session_start();
 		$st_date=$_GET['startdate'];
 		$en_date=$_GET['enddate'];
 		$chief=$_GET['chiefg'];
-		echo "INSERT INTO tournament(year, host,footfall, start_date,end_date,chief_guest) VALUES ($yr,'$host',$foot,'$st_date','$en_date','$chief')";
+		//echo "INSERT INTO tournament(year, host,footfall, start_date,end_date,chief_guest) VALUES ($yr,'$host',$foot,'$st_date','$en_date','$chief')";
 		return execute_query("INSERT INTO tournament(year, host,footfall, start_date,end_date,chief_guest) VALUES ($yr,'$host',$foot,'$st_date','$en_date','$chief')");
 
 	}
@@ -68,17 +69,34 @@ session_start();
 
 	else if (isset($_GET['team_form_submit']))
 	{
+
 //		echo $_GET['year'];
+		if($_GET['teamsize']>0)
 		$tsize=$_GET['teamsize'];
+		else
+			$tsize=0;
 		$spsr=$_GET['sponsor'];
 		$coach=$_GET['coach'];
 		$jrsey=$_GET['jersey'];
 		$iit=$_GET['iitname'];
-		echo "INSERT INTO team(team_size,sponsor,coach,jersey,name) VALUES ($tsize,'$spsr','$coach','$jrsey','$iit')";
-	//	return execute_query("INSERT INTO team(team_size,sponsor,coach,jersey,name) VALUES ($tsize,'$spsr','$coach','$jrsey','$iit')");
-
+//		echo "INSERT INTO team(team_size,sponsor,coach,jersey,name) VALUES ($tsize,'$spsr','$coach','$jrsey','$iit')";
+		execute_query("INSERT INTO team(sponsor,team_size,coach,jersey,name) VALUES ('$spsr',$tsize,'$coach','$jrsey','$iit')");
+//		echo "SELECT team_id FROM team WHERE team_size=$tsize and sponsor='$spsr' and coach='$coach' and jersey='$jrsey' and name='$iit'";
+		$t=execute_query("SELECT team_id FROM team WHERE sponsor='$spsr' and coach='$coach' and jersey='$jrsey' and name='$iit'");
+		global $tid;
+		//echo "aaloo";
+		$tid = $t[0]['team_id'];
+		//echo $tid;
 	}
 
+	else if (isset($_GET['player_in_team_form_submit']))
+	{
+//		echo $_GET['year'];
+		$nm=$_GET['name'];
+	//	echo "INSERT INTO referee(name) VALUES ('$nm')";
+		return execute_query("INSERT INTO referee(name) VALUES ('$nm')");
+
+	}
 	else if (isset($_GET['cricket_match_form_submit']))
 	{
 		$date=$_GET['date'];
@@ -150,9 +168,10 @@ session_start();
 	}
 	function execute_query($query)
 	{
-		include('config.php');
+		include ('config.php');
 		$con=mysqli_connect($host,$user,$password,$dbname) or die(mysqli_error($con));
 		$result = mysqli_query($con,$query) or die ("Error  = ".mysqli_error($con));
+		//$result;
 		while ($row = mysqli_fetch_assoc($result)) {
 			$output[]=$row;
 		}
@@ -160,6 +179,6 @@ session_start();
 		
 		return $output;
 	}
-	
+
 
 ?>
