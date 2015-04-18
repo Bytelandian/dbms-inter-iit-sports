@@ -73,7 +73,7 @@ $playercount = count($playernames);
 				<?php
 				for ($i=0; $i < $iitcount ; $i++)
 				{
-					echo "<option value=\"".$iitnames[$i]['id']."\"> ".$iitnames[$i]['name'] ."</option>" ;
+					echo "<option value=\"".$iitnames[$i]['name']."\"> ".$iitnames[$i]['name'] ."</option>" ;
 				}
 				 ?>
 			</select><br><br>
@@ -86,18 +86,17 @@ $playercount = count($playernames);
 				<?php
 				for ($i=0; $i < $playercount ; $i++)
 				{
-					echo "<option value=\"".$playernames[$i]['id']."\"> ".$playernames[$i]['name'].", ".$playernames[$i]['iit']. ", DOB: ".$playernames[$i]['dob'] ." </option>" ;
+					echo "<option value=\"".$playernames[$i]['id']."\"> ".$playernames[$i]['name'].", ".$playernames[$i]['iit']. ", DOB: ".$playernames[$i]['date_of_birth'] ." </option>" ;
 				}
 				 ?>
 			</select><br><br>
 
 			Toss Won<br>
 			<select  id="tosswon" name="tosswon">
-				<option value="1">1</option>
 				<?php
-				for ($i=0; $i < $teamcount ; $i++)
+				for ($i=0; $i < $iitcount ; $i++)
 				{
-					echo "<option value=\"".$iitnames[$i]['name']."\"> ".$iitnames[$i]['name'].", ".$iitnames[$i]['name']." </option>" ;
+					echo "<option value=\"".$iitnames[$i]['name']."\"> ".$iitnames[$i]['name'] ."</option>" ;
 				}
 				 ?>
 			</select><br><br>
@@ -105,11 +104,10 @@ $playercount = count($playernames);
 
 			Batting First<br>
 			<select  id="batting" name="batting">
-				<option value="1">1</option>
 				<?php
-				for ($i=0; $i < $teamcount ; $i++)
+				for ($i=0; $i < $iitcount ; $i++)
 				{
-					echo "<option value=\"".$iitnames[$i]['name']."\"> ".$iitnames[$i]['name'].", ".$iitnames[$i]['name']." </option>" ;
+					echo "<option value=\"".$iitnames[$i]['name']."\"> ".$iitnames[$i]['name'] ."</option>" ;
 				}
 				 ?>
 			</select><br><br>
@@ -118,7 +116,7 @@ $playercount = count($playernames);
 			<input class="form-control"  id="isfinal" name="isfinal" type="checkbox" placeholder="Is Final?"><br><br>
 			</p>
 			<br><br>
-			<input type="submit" id="cricket_match_form_submit" value="Submit"/>
+			<input type="submit" name="cricket_match_form_submit" value="Submit"/>
 			</form>
 
 				<!--<input type="text" placeholder="username" name="user"><br>
