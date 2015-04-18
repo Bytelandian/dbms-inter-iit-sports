@@ -1,11 +1,8 @@
 <?php
 
 session_start();
-$host="localhost";
-$dbname="admin_login";
-$user="root";
-$password="password";
 
+include('config.php');
 
 $connect = mysqli_connect($host,$user,$password,$dbname);
 $username = $_REQUEST['username'];

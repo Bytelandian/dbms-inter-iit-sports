@@ -51,7 +51,7 @@ session_start();
 			<input type="submit" class="logout_button" value="Next Step: Add Players->"/>  
 		</form>
 		<p class="form-header">Referee</p>		
-		<form name="referee" id="referee" action="referee.php">
+		<form class="set-margin" name="referee" id="referee" action="referee.php">
 
 			
 					<input class="form-control" type="text"  id="name" name="name" placeholder="Referee Name"><br><br>
